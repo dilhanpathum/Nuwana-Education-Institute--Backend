@@ -31,11 +31,15 @@ public class User {
     @Size(max = 100)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false,columnDefinition = "student")
     @Size(max = 100)
     private String role;
 
     @Column(nullable = false)
     @Size(max = 100)
-    private String login;
+    private String gender;
+
+    @Column(nullable = false)
+    @Size(max = 100)
+    private String dob;
 }
