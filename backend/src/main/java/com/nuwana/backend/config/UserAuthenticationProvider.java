@@ -21,7 +21,7 @@ import java.util.Date;
 @Component
 public class UserAuthenticationProvider {
 
-    @Value("${security.jwt.token.secret-key:nuwana}")
+    @Value("${security.jwt.token.secret-key}")
     private String secretKey;
 
     private final UserService userService;
@@ -41,6 +41,8 @@ public class UserAuthenticationProvider {
                 .withSubject(email)
                 .withIssuedAt(now)
                 .withExpiresAt(validity)
+                .withClaim("role",role)
+                .withClaim("firstName",firstName)
                 .sign(algorithm);
     }
 

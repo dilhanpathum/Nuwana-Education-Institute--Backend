@@ -38,4 +38,8 @@ public class User {
     @Column(nullable = false)
     @Size(max = 100)
     private String gender;
+
+    @Column(nullable = false)
+    @Size(max = 100)
+    private String dob;
 }
