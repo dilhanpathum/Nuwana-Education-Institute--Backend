@@ -21,7 +21,7 @@ import java.util.Date;
 @Component
 public class UserAuthenticationProvider {
 
-    @Value("${security.jwt.token.secret-key}")
+    @Value("${security.jwt.token.secret-key:secret-key}")
     private String secretKey;
 
     private final UserService userService;
@@ -30,13 +30,14 @@ public class UserAuthenticationProvider {
     protected void init() {
         // this is to avoid having the raw secret key available in the JVM
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
+        Algorithm algorithm = Algorithm.HMAC256(secretKey);
     }
 
     public String createToken(String email,String role,String firstName) {
         Date now = new Date();
-        Date validity = new Date(now.getTime() + 3600000); // 1 hour
+        Date validity = new Date(now.getTime() + 3600000*24); // 30 days
 
-        Algorithm algorithm = Algorithm.HMAC256("nuwana");
+        Algorithm algorithm = Algorithm.HMAC256(secretKey);
         return JWT.create()
                 .withSubject(email)
                 .withIssuedAt(now)
