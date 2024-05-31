@@ -3,6 +3,7 @@ package com.nuwana.backend.service;
 
 import com.nuwana.backend.dto.SignInDto;
 import com.nuwana.backend.dto.SignUpDto;
+import com.nuwana.backend.dto.UpdateDto;
 import com.nuwana.backend.dto.UserDto;
 import com.nuwana.backend.entity.User;
 import com.nuwana.backend.exceptions.AppException;
@@ -58,6 +59,21 @@ public class UserService {
         User savedUser = userRepo.save(user);
 
         return userMapper.toUserDto(savedUser);
+    }
+
+    public UserDto profileEdit(UpdateDto updateDto) {
+
+
+
+            User user = userMapper.updateToUser(updateDto);
+
+            User savedUser = userRepo.save(user);
+            return userMapper.toUserDto(savedUser);
+
+
+
+
+
     }
 
     public UserDto findByLogin(String email) {
