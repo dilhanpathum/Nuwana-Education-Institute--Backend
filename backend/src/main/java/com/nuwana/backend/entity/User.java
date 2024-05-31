@@ -1,10 +1,13 @@
 package com.nuwana.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Entity
 @NoArgsConstructor
@@ -31,7 +34,7 @@ public class User {
     @Size(max = 100)
     private String password;
 
-    @Column(nullable = false,columnDefinition = "student")
+    @Column(nullable = false)
     @Size(max = 100)
     private String role;
 
@@ -41,5 +44,7 @@ public class User {
 
     @Column(nullable = false)
     @Size(max = 100)
-    private String dob;
+    private String contact;
+
+
 }
