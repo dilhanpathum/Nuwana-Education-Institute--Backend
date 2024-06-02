@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class UpdateDto {
-
+    private int id;
     @Valid
 
     @NotEmpty(message = "First Name field not should be empty")

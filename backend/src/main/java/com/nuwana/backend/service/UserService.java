@@ -62,14 +62,16 @@ public class UserService {
     }
 
     public UserDto profileEdit(UpdateDto updateDto) {
+        User user = userRepo.findUserByemail(updateDto.getEmail());
+//        User user = userRepo.getById(updateDto.getId());
+        user.setFirstname(updateDto.getFirstname());
+        user.setLastname(updateDto.getLastname());
+        user.setContact(updateDto.getContact());
+        user.setEmail(updateDto.getEmail());
 
+        User saveuser = userRepo.save(user);
 
-
-            User user = userMapper.updateToUser(updateDto);
-
-            User savedUser = userRepo.save(user);
-            return userMapper.toUserDto(savedUser);
-
+        return userMapper.toUserDto(saveuser);
 
 
 
