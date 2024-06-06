@@ -77,6 +77,10 @@ public class UserService {
 
 
     }
+    public UserDto getUser(UpdateDto updateDto){
+        User user = userRepo.findUserByemail(updateDto.getEmail());
+        return userMapper.toUserDto(user);
+    }
 
     public UserDto findByLogin(String email) {
         User user = userRepo.findByEmail(email)

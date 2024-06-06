@@ -1,6 +1,7 @@
 package com.nuwana.backend.controller;
 
 import com.nuwana.backend.config.UserAuthenticationProvider;
+import com.nuwana.backend.dto.SignInDto;
 import com.nuwana.backend.dto.SignUpDto;
 import com.nuwana.backend.dto.UpdateDto;
 import com.nuwana.backend.dto.UserDto;
@@ -39,6 +40,11 @@ public class MessagesController {
         return ResponseEntity.created(URI.create("/users/" + createdUser.getId())).body(createdUser);
     }
 
+    @PostMapping("/user")
+    public ResponseEntity<UserDto> userDetails(@RequestBody UpdateDto user) {
+        UserDto userDto =  userService.getUser(user);
+        return ResponseEntity.ok(userDto);
+    }
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExeption(MethodArgumentNotValidException ex){
