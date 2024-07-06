@@ -1,10 +1,9 @@
 package com.nuwana.backend.controller;
 
 import com.nuwana.backend.config.UserAuthenticationProvider;
-import com.nuwana.backend.dto.SignInDto;
-import com.nuwana.backend.dto.SignUpDto;
-import com.nuwana.backend.dto.UpdateDto;
-import com.nuwana.backend.dto.UserDto;
+import com.nuwana.backend.dto.*;
+import com.nuwana.backend.entity.User;
+import com.nuwana.backend.service.EnrollService;
 import com.nuwana.backend.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -41,9 +40,21 @@ public class MessagesController {
     }
 
     @PostMapping("/user")
-    public ResponseEntity<UserDto> userDetails(@RequestBody UpdateDto user) {
-        UserDto userDto =  userService.getUser(user);
-        return ResponseEntity.ok(userDto);
+    public ResponseEntity<UsersDto> userDetails(@RequestBody UsersDto user) {
+        UsersDto usersDto =  userService.getUser(user);
+        return ResponseEntity.ok(usersDto);
+    }
+
+
+//    @PostMapping("/enroll")
+//    public ResponseEntity<EnrollDto> enroll(@RequestBody EnrollDto enrollDto) {
+//        EnrollDto enrallUser = enrollService.enroll(enrollDto);
+//
+//        return ResponseEntity.ok(enrallUser);
+//    }
+    @GetMapping("/allStudents")
+    public List<UsersDto> students(){
+        return userService.getAllStudents();
     }
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)

@@ -1,8 +1,7 @@
 package com.nuwana.backend.mappers;
 
-import com.nuwana.backend.dto.SignUpDto;
-import com.nuwana.backend.dto.UpdateDto;
-import com.nuwana.backend.dto.UserDto;
+import com.nuwana.backend.dto.*;
+import com.nuwana.backend.entity.Enroll;
 import com.nuwana.backend.entity.User;
 
 import org.mapstruct.Mapper;
@@ -17,5 +16,7 @@ public interface UserMapper {
     User signUpToUser(SignUpDto signUpDto);
 
     User updateToUser(UpdateDto updateDto);
+    UsersDto toUsersDto(User user);
+
 
 }
