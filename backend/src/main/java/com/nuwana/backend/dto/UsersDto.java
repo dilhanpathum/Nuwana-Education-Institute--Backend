@@ -1,23 +1,18 @@
 package com.nuwana.backend.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class UserDto {
+public class UsersDto {
 
     private int id;
     private String firstname;
     private String lastname;
+    private String gender;
     private String email;
     private String role;
-    private String gender;
-    private String token;
-
 }
