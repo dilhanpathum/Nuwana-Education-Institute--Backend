@@ -79,8 +79,18 @@ public class UserService {
         List<User> studentList = userRepo.findAll();
         return modelMapper.map(studentList, new TypeToken<List<UsersDto>>(){}.getType());
     }
+
+    public List<UsersDto> getStudents(){
+        List<User> studentList = userRepo.findAllStudents();
+        return modelMapper.map(studentList, new TypeToken<List<UsersDto>>(){}.getType());
+    }
     public UsersDto getUser(UsersDto updateDto){
         User user = userRepo.findUserByemail(updateDto.getEmail());
+        return userMapper.toUsersDto(user);
+    }
+
+    public UsersDto getAttendence(UsersDto updateDto){
+        User user = userRepo.findUserById(updateDto.getId());
         return userMapper.toUsersDto(user);
     }
 

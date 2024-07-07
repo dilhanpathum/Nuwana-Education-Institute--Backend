@@ -36,7 +36,7 @@ public class MessagesController {
     @PutMapping("/edit")
     public ResponseEntity<UserDto> profileEdit(@RequestBody @Valid UpdateDto user) {
         UserDto createdUser = userService.profileEdit(user);
-        return ResponseEntity.created(URI.create("/users/" + createdUser.getId())).body(createdUser);
+        return ResponseEntity.ok(createdUser);
     }
 
     @PostMapping("/user")
@@ -44,7 +44,11 @@ public class MessagesController {
         UsersDto usersDto =  userService.getUser(user);
         return ResponseEntity.ok(usersDto);
     }
-
+    @PostMapping("/attendence")
+    public ResponseEntity<UsersDto> attendence(@RequestBody UsersDto user) {
+        UsersDto usersDto =  userService.getAttendence(user);
+        return ResponseEntity.ok(usersDto);
+    }
 
 //    @PostMapping("/enroll")
 //    public ResponseEntity<EnrollDto> enroll(@RequestBody EnrollDto enrollDto) {
@@ -55,6 +59,10 @@ public class MessagesController {
     @GetMapping("/allStudents")
     public List<UsersDto> students(){
         return userService.getAllStudents();
+    }
+    @GetMapping("/allClassStudents")
+    public List<UsersDto> allStudents(){
+        return userService.getStudents();
     }
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)

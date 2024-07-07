@@ -14,4 +14,5 @@ public interface EnrollRepo extends JpaRepository<Enroll , Long> {
     List<Enroll> findAllPendingEnrolls();
     @Query("SELECT e FROM Enroll e WHERE e.status = 'accept'")
     List<Enroll> findAllAcceptedEnrolls();
+
 }
