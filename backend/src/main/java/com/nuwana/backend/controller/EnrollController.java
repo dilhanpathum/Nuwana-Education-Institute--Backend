@@ -33,6 +33,8 @@ public class EnrollController {
         return enrollService.getAllStudents();
     }
 
+
+
     @PutMapping("/updateStatus")
     public ResponseEntity<EnrollDto> profileEdit(@RequestBody @Valid EnrollDto user) {
         EnrollDto createdUser = enrollService.acceptEnroll(user);
