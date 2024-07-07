@@ -1,6 +1,8 @@
 package com.nuwana.backend.service;
 
 import com.nuwana.backend.dto.EnrollDto;
+import com.nuwana.backend.dto.UpdateDto;
+import com.nuwana.backend.dto.UserDto;
 import com.nuwana.backend.dto.UsersDto;
 import com.nuwana.backend.entity.Enroll;
 import com.nuwana.backend.entity.User;
@@ -43,7 +45,23 @@ public class EnrollService {
     }
 
     public List<EnrollDto> getAllStudents(){
-        List<Enroll> studentList = enrollRepo.findAll();
+        List<Enroll> studentList = enrollRepo.findAllPendingEnrolls();
+        return modelMapper.map(studentList, new TypeToken<List<EnrollDto>>(){}.getType());
+    }
+
+    public EnrollDto acceptEnroll(EnrollDto enrollDto) {
+        Enroll user = enrollRepo.findUserByemail(enrollDto.getEmail());
+
+        user.setStatus(enrollDto.getStatus());
+
+
+        Enroll saveuser = enrollRepo.save(user);
+
+        return enrollMapper.toEnrollDto(saveuser);
+    }
+
+    public List<EnrollDto> getAcceptStudents(){
+        List<Enroll> studentList = enrollRepo.findAllAcceptedEnrolls();
         return modelMapper.map(studentList, new TypeToken<List<EnrollDto>>(){}.getType());
     }
 }

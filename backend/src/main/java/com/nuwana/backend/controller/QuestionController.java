@@ -19,9 +19,9 @@ import java.util.Optional;
 import static org.springframework.http.HttpStatus.CREATED;
 
 
-@CrossOrigin("http://localhost:3000")
+
 @RestController
-@RequestMapping("/api/quizzes")
+@RequestMapping(value="/api/v1")
 @RequiredArgsConstructor
 public class QuestionController {
     private final IQuestionService questionService;
