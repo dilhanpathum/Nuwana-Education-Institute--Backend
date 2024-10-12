@@ -10,7 +10,7 @@ import java.util.List;
 public interface EnrollRepo extends JpaRepository<Enroll , Long> {
     Enroll findUserByemail(String email);
 
-    @Query("SELECT e FROM Enroll e WHERE e.status = 'not'")
+    @Query("SELECT e FROM Enroll e WHERE e.status = 'pending'")
     List<Enroll> findAllPendingEnrolls();
     @Query("SELECT e FROM Enroll e WHERE e.status = 'accept'")
     List<Enroll> findAllAcceptedEnrolls();
