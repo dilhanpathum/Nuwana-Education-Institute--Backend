@@ -56,10 +56,10 @@ public class MessagesController {
 //
 //        return ResponseEntity.ok(enrallUser);
 //    }
-    @GetMapping("/allStudents")
-    public List<UsersDto> students(){
-        return userService.getAllStudents();
-    }
+//    @GetMapping("/allStudents")
+//    public List<UsersDto> students(){
+//        return userService.getAllStudents();
+//    }
     @GetMapping("/allClassStudents")
     public List<UsersDto> allStudents(){
         return userService.getStudents();
