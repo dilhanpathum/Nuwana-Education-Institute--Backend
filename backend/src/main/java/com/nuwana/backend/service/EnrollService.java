@@ -64,4 +64,9 @@ public class EnrollService {
         List<Enroll> studentList = enrollRepo.findAllAcceptedEnrolls();
         return modelMapper.map(studentList, new TypeToken<List<EnrollDto>>(){}.getType());
     }
+
+    public List<EnrollDto> getStudents(){
+        List<Enroll> studentList = enrollRepo.findAll();
+        return modelMapper.map(studentList, new TypeToken<List<EnrollDto>>(){}.getType());
+    }
 }

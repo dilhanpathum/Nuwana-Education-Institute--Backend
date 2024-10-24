@@ -32,7 +32,10 @@ public class EnrollController {
     public List<EnrollDto> students(){
         return enrollService.getAllStudents();
     }
-
+    @GetMapping("/allStudents")
+    public List<EnrollDto> allStudents(){
+        return enrollService.getStudents() ;
+    }
 
 
     @PutMapping("/updateStatus")
